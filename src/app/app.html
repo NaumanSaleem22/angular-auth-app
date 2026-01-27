@@ -2,6 +2,8 @@
     <div>
         <a  *ngIf="!isLoggedIn()"  routerLink="/login">Login</a> <br /> <br />
         <a *ngIf="isLoggedIn()" routerLink="/profile">Profile</a>
+        <a *ngIf="isLoggedIn()" routerLink="/user-listing">User Listing</a>
+        <a *ngIf="isLoggedIn()" routerLink="/create-user">Create User</a>
     </div>
 
     <div  *ngIf="isLoggedIn()">

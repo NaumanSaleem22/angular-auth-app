@@ -1,0 +1,24 @@
+<form (ngSubmit)="createUser()">
+    <div>
+        <label>Name</label><br />
+        <input type="text" [(ngModel)]="name" name="name" required />
+    </div>
+    <br />
+    <div>
+        <label>Email</label><br />
+        <input type="email" [(ngModel)]="email" name="email" required />
+    </div>
+    <br />
+    <div>
+        <label>Avatar</label><br />
+        <input type="text" [(ngModel)]="avatar" name="avatar" required />
+    </div>
+    <br />
+    <div>
+        <label>Password</label><br />
+        <input type="password" [(ngModel)]="password" name="password" required />
+    </div>
+    <br />
+      <button type="submit">Create User</button>
+
+</form>

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,9 @@ export class Auth {
   private loginUrl = 'https://api.escuelajs.co/api/v1/auth/login';
 
   private profileUrl = 'https://api.escuelajs.co/api/v1/auth/profile';
+
+  private userUrl = 'https://api.escuelajs.co/api/v1/users/';
+
   constructor(private http: HttpClient) { }
 
   login(email: any, password: any) {
@@ -43,5 +47,19 @@ export class Auth {
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('access_token');
+  }
+
+  // Create Users 
+
+  createUser(name: any, email: any, password: any, avatar: any) {
+    return this.http.post(this.userUrl, {
+      name, email, password, avatar
+    })
+  }
+
+  // Get all users
+
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(this.userUrl);
   }
 }
