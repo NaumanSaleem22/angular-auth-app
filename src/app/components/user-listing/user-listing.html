@@ -9,6 +9,9 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Details</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +22,36 @@
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.role}}</td>
+                <td><button (click)="editUser(user)">Edit User</button></td>
+                <td><button (click)="deleteUser(user.id)">Delete User</button></td>
+                <td><a [routerLink]="['/user-details', user.id]" >View Details</a></td>
             </tr>
         </tbody>
     </table>
-   
+
 </ng-container>
+
+<!-- Edit Form -->
+<div *ngIf="selectedUser" style="border:1px solid #ccc; padding:10px; margin-top:20px;">
+
+    <h3>Edit User</h3>
+
+    <form (ngSubmit)="submitUpdate()">
+
+        <label>Name</label><br />
+        <input type="text" [(ngModel)]="selectedUser.name" name="name" required /><br /><br />
+
+        <label>Email</label><br />
+        <input type="email" [(ngModel)]="selectedUser.email" name="email" required /><br /><br />
+
+        <label>Role</label><br />
+        <select [(ngModel)]="selectedUser.role" name="role">
+            <option value="admin">Admin</option>
+            <option value="customer">Customer</option>
+        </select><br /><br />
+
+        <button type="submit">Update</button>
+        <button type="button" (click)="cancelEdit()">Cancel</button>
+
+    </form>
+</div>

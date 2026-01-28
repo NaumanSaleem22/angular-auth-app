@@ -62,4 +62,20 @@ export class Auth {
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>(this.userUrl);
   }
+
+  // Update All Users
+  updateUser(id: number, userData: any) {
+    return this.http.put(`${this.userUrl}${id}`, userData);
+  }
+
+
+  // Delete User
+  deleteUser(id:number){
+    return this.http.delete(`${this.userUrl}${id}`);
+  }
+
+  // User details
+  getUserById(id:number){
+    return this.http.get(`${this.userUrl}${id}`);
+  }
 }
